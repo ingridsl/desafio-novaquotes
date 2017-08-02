@@ -1,0 +1,22 @@
+{
+  "name": "Novaquote",
+  "description": "novaquote",
+  "repository": "https://github.com/ingridsl/Novaquotes",
+  "keywords": ["node", "express", "heroku"],
+  "success_url": "/",
+  "env": {
+    "HEROKU_APP_NAME": {
+      "required": true
+    },
+    "NOVAQUOTES_COMMAND_TOKEN": {
+      "description": "Slash command token, for the starbot command endpoint",
+      "required": true
+    },
+    "SLACK_TOKEN": {
+      "description": "Slack bot RTM API token",
+      "required": false
+    },
+    "NODE_ENV": "staging"
+},
+  "image": "heroku/nodejs"
+}

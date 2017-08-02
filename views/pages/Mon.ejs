@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Novaquotes desafio </title>
+</head>
+
+<body>
+
+<div class="container">
+<h2>Database Results</h2>
+
+<ul>
+    <% results.forEach(function(r) { %>
+        <li> <font color = "red"> <%= r.date %>  <%= r.weekday %> </font> : <%= r.quote %></li>
+        <br />
+         <hr />
+    <% }); %>
+</ul>
+
+</div>
+
+</body>
+</html>
