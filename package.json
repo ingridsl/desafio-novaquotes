@@ -2,7 +2,7 @@
   "name": "NOVAQU0TE",
   "description": "NOVAQUOTE DESAFIO",
   "engines": {
-    "node": "5.0.0"
+    "node": "5.10.0"
   },
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,7 @@
     "name": "Ingrid Santana"
   },
   "dependencies": {
-    "pg": "6.x",
+    "pg": "7.0",
     "ejs": "2.5.6",
     "express": "4.15.2",
     "body-parser" : "^1.15.0",

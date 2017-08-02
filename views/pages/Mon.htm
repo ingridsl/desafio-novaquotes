@@ -2,20 +2,49 @@
 <html>
 <head>
   <title> Novaquotes desafio </title>
+<style>
+.card {
+    box-shadow: 0 4px 8px 0 rgba(189,189,189,0.2);
+    transition: 0.3s;
+    width: 40%;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(189,189,189,0.2);
+}
+
+.container {
+    padding: 16px 16px;
+}
+
+.item-content {
+  background-color:#0288d1;
+}
+</style>
 </head>
+<body bgcolor = "#212121">
 
-<body>
 
+<% results.forEach(function(r) { %>
+<center>
 <div class="container">
-<h2>Database Results</h2>
+<div class="card">
+    <div class="col s6">
+		<div class="item-content">
+			<div class="container">
+				<p> <%= r.date %>  <%= r.weekday %> : <%= r.quote %></p>
+				<br />
 
-<ul>
-    <% results.forEach(function(r) { %>
-        <li> <%= r.date %> : <%= r.quote %></li>
-    <% }); %>
-</ul>
-
+			</div>
+        </div>
+    </div>
 </div>
+</div>
+</center>
+
+
+<% }); %>
+
 
 </body>
 </html>

@@ -16,7 +16,7 @@ app.set('view engine', 'ejs');
 
 app.get('/', function(request, response) {
   //response.render('pages/index');
-  response.send("\n Heroku's app to the NOVAQUOTE hallenge connected to slack");
+  response.send("\n Heroku's app to the NOVAQUOTE challenge connected to slack");
 });
 
 app.listen(app.get('port'), function() {
