@@ -1,3 +1,7 @@
+
+
+
+
 var express = require('express');
 var app = express();
 
@@ -12,7 +16,7 @@ app.set('view engine', 'ejs');
 
 app.get('/', function(request, response) {
   //response.render('pages/index');
-  response.send("\n Heroku's app to the Novabot challenge connected to slack");
+  response.send("\n Heroku's app to the NOVAQUOTE hallenge connected to slack");
 });
 
 app.listen(app.get('port'), function() {
@@ -22,10 +26,10 @@ app.listen(app.get('port'), function() {
 
 //database
 var pg = require('pg');
-const DATABASE_URL = 'postgres://lwbrklwqvbkrxx:977945e691c7afa8d678ce2f88adc51bab14b7def4685a2f331abc0cafcf4de1@ec2-54-243-252-232.compute-1.amazonaws.com:5432/d2mp91jbd7uk2';
+
 /*app.get('/novaquotes', (req, res) => {
 	var query = "insert into quotes (1, " + quote + ", weekday, date)"
-  pg.connect(DATABASE_URL, function(err, client, done) {
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query(query, function(err, result) {
       done();
       if (err)
@@ -37,7 +41,7 @@ const DATABASE_URL = 'postgres://lwbrklwqvbkrxx:977945e691c7afa8d678ce2f88adc51b
 }*/
 
 app.get('/main.htm', function (request, response) {
-  pg.connect(DATABASE_URL, function(err, client, done) {
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query('SELECT * FROM quotes', function(err, result) {
       done();
       if (err)
@@ -49,7 +53,7 @@ app.get('/main.htm', function (request, response) {
 });
 
 app.get('/Mon.htm', function (request, response) {
-  pg.connect(DATABASE_URL, function(err, client, done) {
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query('SELECT * FROM quotes WHERE weekday LIKE $1', ['%' + 'Mon' + '%'], function(err, result) {
       done();
       if (err)
@@ -61,7 +65,7 @@ app.get('/Mon.htm', function (request, response) {
 });
 
 app.get('/Tue.htm', function (request, response) {
-  pg.connect(DATABASE_URL, function(err, client, done) {
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query('SELECT * FROM quotes WHERE weekday LIKE $1', ['%' + 'Tue' + '%'], function(err, result) {
       done();
       if (err)
@@ -73,7 +77,7 @@ app.get('/Tue.htm', function (request, response) {
 });
 
 app.get('/Wed.htm', function (request, response) {
-  pg.connect(DATABASE_URL, function(err, client, done) {
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query('SELECT * FROM quotes WHERE weekday LIKE $1', ['%' + 'Wed' + '%'], function(err, result) {
       done();
       if (err)
@@ -85,7 +89,7 @@ app.get('/Wed.htm', function (request, response) {
 });
 
 app.get('/Thu.htm', function (request, response) {
-  pg.connect(DATABASE_URL, function(err, client, done) {
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query('SELECT * FROM quotes WHERE weekday LIKE $1', ['%' + 'Thu' + '%'], function(err, result) {
       done();
       if (err)
@@ -97,7 +101,7 @@ app.get('/Thu.htm', function (request, response) {
 });
 
 app.get('/Fri.htm', function (request, response) {
-  pg.connect(DATABASE_URL, function(err, client, done) {
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query('SELECT * FROM quotes WHERE weekday LIKE $1', ['%' + 'Fri' + '%'], function(err, result) {
       done();
       if (err)
@@ -109,7 +113,7 @@ app.get('/Fri.htm', function (request, response) {
 });
 
 app.get('/Sat.htm', function (request, response) {
-  pg.connect(DATABASE_URL, function(err, client, done) {
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query('SELECT * FROM quotes WHERE weekday LIKE $1', ['%' + 'Sat' + '%'], function(err, result) {
       done();
       if (err)
@@ -121,7 +125,7 @@ app.get('/Sat.htm', function (request, response) {
 });
 
 app.get('/Sun.htm', function (request, response) {
-  pg.connect(DATABASE_URL, function(err, client, done) {
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query('SELECT * FROM quotes WHERE weekday LIKE $1', ['%' + 'Sun' + '%'], function(err, result) {
       done();
       if (err)
@@ -138,7 +142,7 @@ app.get('/menu.htm', function (request, response) {
 });
 
 app.get('/db-quote', function (request, response) {
-	pg.connect(DATABASE_URL, function(err, client, done) {
+	pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 	    client.query('SELECT * FROM quotes', function(err, result) {
 	      done();
 	      if (err)
@@ -198,7 +202,7 @@ app.post('/novaquotes', (req, res) => {
 	var n = weekday[d.getDay()];
 
 
-	pg.connect(DATABASE_URL, function(err, client, done)  {
+	pg.connect(process.env.DATABASE_URL, function(err, client, done)  {
 		var date = new Date();
 		var current_hour = date.getHours();
 		var id = 1;
